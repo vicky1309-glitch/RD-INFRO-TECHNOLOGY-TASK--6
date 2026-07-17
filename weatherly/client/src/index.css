@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-body text-ink antialiased;
+    background: linear-gradient(135deg, #ffdfd1 0%, #fff7f2 50%, #e8f8e5 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  body.theme-dark {
+    background: linear-gradient(135deg, #10240f 0%, #16311a 50%, #133a18 100%);
+    @apply text-cream;
+  }
+  body.theme-ocean {
+    background: linear-gradient(135deg, #d1eeff 0%, #f2fbff 50%, #e5f4f8 100%);
+  }
+  body.theme-sunset {
+    background: linear-gradient(135deg, #ffd6b8 0%, #fff0e0 50%, #ffe3ec 100%);
+  }
+  ::selection {
+    background: #59c749;
+    color: white;
+  }
+  *:focus-visible {
+    outline: 2px solid #237a20;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative rounded-xl2 border border-white/40 bg-white/40 shadow-glass backdrop-blur-glass;
+  }
+  .theme-dark .glass-card {
+    @apply border-white/10 bg-white/5;
+  }
+  .glass-card-solid {
+    @apply relative rounded-xl2 border border-white/60 bg-white/70 shadow-glass backdrop-blur-glass;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-mantis px-6 py-3 font-semibold text-white shadow-float transition-all duration-200 hover:bg-dark-green hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-mantis/30 bg-white/60 px-6 py-3 font-semibold text-dark-green backdrop-blur-glass transition-all duration-200 hover:bg-white/90 hover:-translate-y-0.5;
+  }
+  .input-field {
+    @apply w-full rounded-2xl border border-white/50 bg-white/60 px-4 py-3 text-ink placeholder:text-ink/40 backdrop-blur-glass transition-all focus:border-mantis focus:bg-white/80 focus:outline-none;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-xl bg-white/40;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    background-size: 500px 100%;
+  }
+}
+
+.leaflet-container {
+  border-radius: 1.75rem;
+  z-index: 0;
+}
